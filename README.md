@@ -25,5 +25,18 @@ Sebuah struct yang digunakan untuk mengatur life cycle testing
 Sebuah struct yang digunakan untuk benchmarking, mengetahui seberapa cepat dan efisien kode program dapat berjalan
 
 <!-- Command To Run Unit Test -->
-- go test    -> Run unit test without showing corresponding functions
-- go test -v -> Run unit test and show corresponding functions (v : verbose)
+- go test                       -> Run unit test without showing corresponding functions
+- go test -v                    -> Run unit test and show corresponding functions (v : verbose)
+- go test -run <functionName>   -> Run unit test on spesific function
+
+<!-- To Fail Unit test -->
+- Fail()    -> Marks The Test as Failed, but Program still continue executing
+- FailNow() -> Marks The Test as Failed, and stop the program immediately
+- Error()   -> Marks The Test as Failed, make a report, but does not stop the program from executing
+- Fatal()   -> Marks The Test as Failed, make a report, stop the program from executing
+
+<!-- Unit testing using if-else is not efficient, especially when more data is involved, therefore we can utilize assertion-->
+- In Go, Assertion library is not yet available, therefore it must be created manually
+- TESTIFY is one of the most famous assertion library (https://github.com/stretchr/testify)
+- To add the TESTIFY dependency, use type command "go get github.com/stretchr/testify"
+- Testify has two packages, assert and require, assert calls (Fail()), and require calls (FailNow()) when the unit test fails.
