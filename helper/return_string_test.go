@@ -89,6 +89,9 @@ func TestSkip(t *testing.T) {
 }
 
 // Subtest, Run Multiple Unit Test on a Function
+// Comman To Run Spesific Subtest
+// go test -v -run <FunctionName>/SubTestName -> Run spesific unit test in a function
+// go test -v -run /SubTestName 			  -> Run spesific unit test from all the functions
 func TestSubTest(t *testing.T) {
 	t.Run("Tantowi", func(t *testing.T) {
 		result := Hello("Tantowi")
@@ -99,6 +102,33 @@ func TestSubTest(t *testing.T) {
 		result := Hello("Putra")
 		require.Equal(t, "Hello, Titanium", result)
 	})
+}
+
+func TestHelloWorldTable(t *testing.T) {
+	test_data := []struct {
+		name     string
+		request  string
+		expected string
+	}{
+		{
+			name:     "Tantowi",
+			request:  "Titanium",
+			expected: "Hello, Titanium1",
+		},
+
+		{
+			name:     "Tantowie",
+			request:  "Uranium",
+			expected: "Hello, Uranium",
+		},
+	}
+
+	for _, data := range test_data {
+		t.Run(data.name, func(t *testing.T) {
+			result := Hello(data.request)
+			require.Equal(t, data.expected, result)
+		})
+	}
 }
 
 // Kinda Curious How these pointers work

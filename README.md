@@ -54,3 +54,16 @@ Sebuah struct yang digunakan untuk benchmarking, mengetahui seberapa cepat dan e
 <!-- Subtest -->
 - Golang supports the feature of creating unit test function IN ANOTHER unit test
 - This feature rarely present / exist in another programming language
+
+<!-- Table Test -->
+- Using sub test, we can create dynamic unit test by preparing test data in a slice, then iterate through, this is known as table test
+
+<!-- Mock -->
+- Mock is an objec that has been programmed in a certain way, so that when it's called it will result to the data that has been programmed before
+- Mock is a technique in unit testing, therefore we can make mock object from an object that is hard to test
+- For example when we want to create a unit test, but the code program somehow oblige use to make a call to an API third party service, it will be difficult since we need to always call the third party service
+  and the result could be of not what is desired.
+- In this situation, it's best suited to use the Mock object.
+- we can use TESTIFY to create mock object
+
+
