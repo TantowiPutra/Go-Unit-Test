@@ -2,11 +2,18 @@ package helper
 
 import (
 	"fmt"
+	"runtime"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
+
+func TestMain(m *testing.M) {
+	fmt.Println("Before Unit Test")
+	m.Run()
+	fmt.Println("After Unit Test")
+}
 
 func RecoveryFunc() {
 	recover()
@@ -31,7 +38,7 @@ func TestHelloWorld2(t *testing.T) {
 	if result != "Hello, 123 Example" {
 		// Unit test failed
 		// panic("Result is not Hello, Example")
-		// t.FailNow()
+		t.FailNow()
 	}
 
 	fmt.Println("Gamasuk Sini Ges Kalo Fail")
@@ -70,6 +77,28 @@ func TestHelloWorldRequire(t *testing.T) {
 	result := Hello("Tantowi")
 	require.Equal(t, "Hello, Tantowi 1123", result, "Result must be 'Hello, Tantowi 1123'")
 	fmt.Println("Test Hello World With Require")
+}
+
+func TestSkip(t *testing.T) {
+	if runtime.GOOS == "windows" {
+		t.Skip("Can't run on Windows")
+	}
+
+	result := Hello("Tantowi")
+	require.Equal(t, "Hello, Tantowi 1123", result, "Result must be 'Hello, Tantowi 1123'")
+}
+
+// Subtest, Run Multiple Unit Test on a Function
+func TestSubTest(t *testing.T) {
+	t.Run("Tantowi", func(t *testing.T) {
+		result := Hello("Tantowi")
+		require.Equal(t, "Hello, Titanium", result)
+	})
+
+	t.Run("Putra", func(t *testing.T) {
+		result := Hello("Putra")
+		require.Equal(t, "Hello, Titanium", result)
+	})
 }
 
 // Kinda Curious How these pointers work

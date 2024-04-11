@@ -40,3 +40,17 @@ Sebuah struct yang digunakan untuk benchmarking, mengetahui seberapa cepat dan e
 - TESTIFY is one of the most famous assertion library (https://github.com/stretchr/testify)
 - To add the TESTIFY dependency, use type command "go get github.com/stretchr/testify"
 - Testify has two packages, assert and require, assert calls (Fail()), and require calls (FailNow()) when the unit test fails.
+
+<!-- Skip Unit Test -->
+- testing package has method t.Skip() incase certain unit test must be skipped, for example when a unit test can only be run on a spesific operating system (MacOS/Windows)
+
+<!-- Before and After Test (testing.M)-->
+- Sometimes in a unit test, we're trying to do something before and after a unit test is executed
+- If the code made before and after a certain unit test is identical, then it could lead to code inefficiency
+- to solve this, we can use testing.M method to set the executing unit test
+- To se the executing unit test, function named "TestMain" must be declared with the parameter testing.M
+- Function TestMain is only executed ONCE per package
+
+<!-- Subtest -->
+- Golang supports the feature of creating unit test function IN ANOTHER unit test
+- This feature rarely present / exist in another programming language
