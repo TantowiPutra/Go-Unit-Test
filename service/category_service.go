@@ -20,3 +20,7 @@ func (service *CategoryService) Get(id string) (*entity.Category, error) {
 		return category, nil
 	}
 }
+
+func TestFunction() int {
+	return 123
+}

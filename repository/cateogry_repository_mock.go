@@ -20,3 +20,8 @@ func (repository *CategoryRepositoryMock) FindById(id string) *entity.Category {
 		return &category
 	}
 }
+
+// Just testing wether a function could accept slice as parameter
+// func TestParameterSlice(name []string) {
+
+// }
